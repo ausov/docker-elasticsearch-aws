@@ -1,0 +1,29 @@
+# ==============================================================================
+# ELASTICSEARCH 1.5 SETTINGS
+# ==============================================================================
+
+cluster.name: ${CLUSTER_NAME}
+node.name: ${HOSTNAME}
+plugin.mandatory: "cloud-aws"
+
+# -------------------------------------
+# EC2 DISCOVERY
+# -------------------------------------
+discovery.type: "ec2"
+discovery.ec2.ping_timeout: "30s"
+discovery.zen.ping.multicast.enabled: false
+network.publish_host: _ec2:privateIp_
+
+# discovery.ec2.groups: ${SECURITY_GROUP}
+# discovery.ec2.availability_zones: ${AWS_AZ:"eu-central-1a, eu-central-1b"}
+# cloud.aws.region: ${AWS_REGION:"eu-central-1"}
+# cloud.aws.access_key: ${AWS_ACCESS_KEY_ID}
+# cloud.aws.secret_key: ${AWS_SECRET_ACCESS_KEY}
+
+# -------------------------------------
+# MEMORY
+# -------------------------------------
+# ES_HEAP_SIZE: 250m
+bootstrap.mlockall: true
+indices.fielddata.cache.size: "30%"
+indices.cache.filter.size: "30%"
